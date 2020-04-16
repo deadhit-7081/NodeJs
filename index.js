@@ -3,15 +3,18 @@ var rect=require('./rectangle')
 function solveRect(l,b)
 {
     console.log("Solving for rect with l= "+l +" and b= "+b);
-
-    if(l<=0 || b<=0)
+    rect(l,b,(err,rectangle) => 
     {
-        console.log("Rect dim should be >0")
-    }
-    else{
-        console.log("area :"+rect.area(l,b));
-        console.log("peri :"+rect.perimeter(l,b));
-    }
+        if(err)
+        {
+            console.log("ERROR: ",err.message);
+        }
+        else{
+            console.log("Area of rect of L = "+l+" and b ="+b+" is "+rectangle.area())
+            console.log("Perimeter of rect of L = "+l+" and b ="+b+" is "+rectangle.perimeter())
+        }
+    })
+    console.log("This is after rect()")
 }
 
 solveRect(2,4)
